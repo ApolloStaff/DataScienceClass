@@ -30,23 +30,27 @@ def inputParser(stringInput):
         result.append(month)
     return result
 
-try:
-    timeLeft = None
-    currentDate = inputParser(date.today().strftime("%d-%m"))
-    updateDate = inputParser("15-12")
-    print("Do you want to include today's date in the calculation? (yes/no) ", end="")
-    choice = input().strip().lower()
-    if choice in ['yes', 'no']:
-        include_today = (choice == 'yes')
-        timeLeft = dateDifference(currentDate, updateDate, include_today)
-    else:
-        print("Invalid choice")
-    print("How many walls are left to upgrade? ", end="")
-    walls = int(input())
-    averageperDay=float(walls/timeLeft)
-    print("You need to upgrade "+str(averageperDay)+" walls per day before update drops.")
-    costMultiplier=4_500_000
-    print("You need to farm "+str(int(averageperDay*costMultiplier))+" gold and "+str(int(averageperDay*costMultiplier))+" elixir each day.")
-    
-except ValueError as e:
-    print(f"An error occurred: {e}")
+def main():
+    try:
+        timeLeft = None
+        currentDate = inputParser(date.today().strftime("%d-%m"))
+        updateDate = inputParser("15-12")
+        print("Do you want to include today's date in the calculation? (yes/no) ", end="")
+        choice = input().strip().lower()
+        if choice in ['yes', 'no']:
+            include_today = (choice == 'yes')
+            timeLeft = dateDifference(currentDate, updateDate, include_today)
+        else:
+            print("Invalid choice")
+        print("How many walls are left to upgrade? ", end="")
+        walls = int(input())
+        averageperDay=float(walls/timeLeft)
+        print("You need to upgrade "+str(averageperDay)+" walls per day before update drops.")
+        costMultiplier=4_500_000
+        print("You need to farm "+str(int(averageperDay*costMultiplier))+" gold and "+str(int(averageperDay*costMultiplier))+" elixir each day.")
+        
+    except ValueError as e:
+        print(f"An error occurred: {e}")
+
+if __name__=="__main__":
+    main()
