@@ -45,6 +45,8 @@ try:
     walls = int(input())
     averageperDay=float(walls/timeLeft)
     print("You need to upgrade "+str(averageperDay)+" walls per day before update drops.")
+    costMultiplier=4_500_000
+    print("You need to farm "+str(int(averageperDay*costMultiplier))+" gold and "+str(int(averageperDay*costMultiplier))+" elixir each day.")
     
 except ValueError as e:
     print(f"An error occurred: {e}")
