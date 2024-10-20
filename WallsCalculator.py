@@ -34,16 +34,17 @@ try:
     timeLeft = None
     currentDate = inputParser(date.today().strftime("%d-%m"))
     updateDate = inputParser("15-12")
-    print("Do you want to include today's date in the calculation? (yes/no)")
+    print("Do you want to include today's date in the calculation? (yes/no) ", end="")
     choice = input().strip().lower()
     if choice in ['yes', 'no']:
         include_today = (choice == 'yes')
         timeLeft = dateDifference(currentDate, updateDate, include_today)
     else:
         print("Invalid choice")
-    print("How many walls are left to upgrade?")
+    print("How many walls are left to upgrade? ", end="")
     walls = int(input())
     averageperDay=float(walls/timeLeft)
     print("You need to upgrade "+str(averageperDay)+" walls per day before update drops.")
+    
 except ValueError as e:
     print(f"An error occurred: {e}")
